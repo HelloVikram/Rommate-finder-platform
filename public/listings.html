@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Listings Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="container mt-4">
+    <div id="navbar-container"></div>
+    <h2>Listings</h2>
+
+    <div class="row g-2">
+      <div class="col-md-3">
+        <input
+          id="filterCity"
+          type="text"
+          class="form-control"
+          placeholder="Enter City"
+        />
+      </div>
+      <div class="col-md-3">
+        <input
+          id="filterRent"
+          type="number"
+          class="form-control"
+          placeholder="Enter Max Rent"
+        />
+      </div>
+      <div class="col-md-2">
+        <select id="filterGender" class="form-control">
+          <option value="">Any</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select id="roomType" class="form-control">
+          <option value="">Any</option>
+          <option value="Private">Private</option>
+          <option value="Shared">Shared</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <button id="applyFilters" class="btn btn-primary w-100">Apply</button>
+      </div>
+    </div>
+
+    <div id="listingsContainer" class="row mt-3"></div>
+
+    <div class="row mt-3 justify-content-center">
+      <div class="col-md-2">
+        <select id="limitSelect" class="form-select">
+          <option value="3">3</option>
+          <option value="6" selected>6</option>
+          <option value="9">9</option>
+          <option value="12">12</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <button id="limitApplyBtn" class="btn btn-primary w-100">Apply</button>
+      </div>
+    </div>
+
+    <div id="pagination" class="d-flex justify-content-center mt-4"></div>
+    
+    <div
+      class="modal fade"
+      id="contactModal"
+      tabindex="-1"
+      aria-labelledby="contactModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="contactModalLabel">
+              Contact Listing Owner
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="contactForm">
+              <input type="hidden" id="contactToEmail" />
+              <div class="mb-3">
+                <label for="senderName" class="form-label">Your Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="senderName"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="senderEmail" class="form-label">Your Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="senderEmail"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="messageText" class="form-label">Message</label>
+                <textarea
+                  class="form-control"
+                  id="messageText"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.10.0/axios.min.js"
+      integrity="sha512-WkZrEcQ5LMyNy6Y2PQf+Tu3vMcsmKKRKuPXtJSTHQJ3mpuvLRlA5dlDDhrrcXfyWr6Z/y3wIMfjfqVFO/gDZYQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./js/listings.js"></script>
+  </body>
+</html>
