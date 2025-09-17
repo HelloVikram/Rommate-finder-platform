@@ -10,6 +10,7 @@ loginform.addEventListener('submit',async(e)=>{
        const token=response.data.token;
        localStorage.setItem('token',token);
        alert(response.data.message);
+       window.location.href = "listings.html";
     }catch(err){
         if(err.response.status==404||err.response.status==401||err.response.status==500){
             alert(err.response.data.message);

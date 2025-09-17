@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const jwt=require('jsonwebtoken');
 
 const signup = async (req, res, next) => {
-    const { name, email, password, age, gender, profession, budget } = req.body
+    const { name, email, password, age, gender, profession, budget, phone} = req.body
     
     try {
         const existingUser = await User.findOne({ email });
@@ -19,7 +19,8 @@ const signup = async (req, res, next) => {
             age,
             gender,
             profession,
-            budget
+            budget,
+            phone
         })
         res.status(201).json({ success: true, message: 'Signup Successfull!' });
     } catch (err) {
@@ -40,7 +41,7 @@ const login=async (req,res,next)=>{
       if(!isMatch){
         return res.status(401).json({status:false,message:'Incorrect Password'})
       }
-      const token= jwt.sign({id:user._id,email:user.email,name:user.name},process.env.JWT_SECRET);
+      const token= jwt.sign({id:user._id,email:user.email,name:user.name,isPremium:user.isPremium},process.env.JWT_SECRET);
       return res.status(200).json({success:true,token:token,message:'Login successfull!'});
      }
     }catch(err){

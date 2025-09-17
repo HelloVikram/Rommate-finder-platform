@@ -9,9 +9,9 @@ registerForm.addEventListener('submit',async (eve) => {
     const gender = document.getElementById("gender").value
     const profession = document.getElementById("profession").value
     const budget = document.getElementById("budget").value
-    
+    const phone=document.getElementById("phone").value
     try{
-       const response=await axios.post(`${endpoint}/signup`,{name,email,password,age,gender,profession,budget})
+       const response=await axios.post(`${endpoint}/signup`,{name,email,password,age,gender,profession,budget,phone})
        alert('Signup Successfull');
        window.location.href='../login.html';
     }catch(err){
